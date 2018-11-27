@@ -1,25 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataPersistenceService } from 'src/app/services/data-persistence/data-persistence.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Client } from 'src/app/models/clients/clients.model';
+import { FormBuilderValidators } from 'src/app/helpers/validators';
+import { MaskDirective } from 'src/app/helpers/directives/mask/mask.directive';
 
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
   styleUrls: ['./client-form.component.css']
 })
-export class ClientFormComponent implements OnInit {
+export class ClientFormComponent implements OnInit, AfterViewInit {
   private type: string;
   private client: Client;
   public form: FormGroup;
 
+  // @ViewChild(MaskDirective) age: MaskDirective;
 
   constructor(
     private dataPersistence: DataPersistenceService,
     private fb: FormBuilder,
     private router: Router,
-    private active: ActivatedRoute
+    private active: ActivatedRoute,
+    private custonValidators: FormBuilderValidators
   ) { }
 
 
@@ -32,12 +36,14 @@ export class ClientFormComponent implements OnInit {
     }
 
     this.form = this.fb.group({
-      name: [this.client ? this.client.name : '', Validators.required],
-      age: [this.client ? this.client.age : '', Validators.required],
-      cpf: [this.client ? this.client.cpf : '', Validators.required],
-      phone: [this.client ? this.client.phone : '', Validators.required],
-      email: [this.client ? this.client.email : '', Validators.required]
+      name: [this.client ? this.client.name : '', [Validators.required, this.custonValidators.nameFormat]],
+      age: [this.client ? this.client.age : '', [Validators.required, Validators.pattern('^[0-9]{1,3}$'), this.custonValidators.ageFormat]],
+      // tslint:disable-next-line:max-line-length
+      cpf: [this.client ? this.client.cpf : '', [Validators.required, this.custonValidators.cpfFormat, Validators.pattern('^([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})$')]],
+      phone: [this.client ? this.client.phone : '', [Validators.required]],
+      email: [this.client ? this.client.email : '', [Validators.required, this.custonValidators.emailFormat]]
     });
+
   }
 
 
@@ -72,4 +78,8 @@ export class ClientFormComponent implements OnInit {
     this.initFormControls();
   }
 
+
+  ngAfterViewInit() {
+    // this.age.writeValue(this.client.age);
+  }
 }

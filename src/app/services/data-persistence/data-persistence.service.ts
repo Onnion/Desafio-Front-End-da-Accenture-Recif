@@ -63,6 +63,6 @@ export class DataPersistenceService {
   }
 
 
-  public delete(): void {}
+  public delete(entity: string, data: Client): void {}
 
 }

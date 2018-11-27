@@ -2,14 +2,14 @@
   <div class="row mt-5 mb-5">
     <div class="col-xl-12 mb-xl-0">
       <div class="card shadow">
-        <div class="card-header border-0"  style="position: sticky; top: 0; z-index: 999;">
+        <div class="card-header border-0" style="position: sticky; top: 0; z-index: 999;">
           <div class="row align-items-center">
             <div class="col">
               <h3 class="mb-0">Clientes</h3>
             </div>
             <div class="col text-right">
               <a [routerLink]="['/cadastrar']" class="btn btn-sm btn-slack">
-                <mat-icon matSuffix>person_add</mat-icon> <span style="margin-left: 3px">  Cadastrar Cliente </span>
+                <mat-icon matSuffix>person_add</mat-icon> <span style="margin-left: 3px"> Cadastrar Cliente </span>
               </a>
             </div>
           </div>
@@ -39,7 +39,7 @@
                   <button [routerLink]="['/editar', client.id]" class="btn-primary" mat-raised-button style="min-width: 0; padding: 2px; margin: 0px 5px;">
                     <mat-icon matSuffix>edit</mat-icon>
                   </button>
-                  <button class="btn-warning" mat-raised-button style="min-width: 0; padding: 2px; margin: 0px 5px;">
+                  <button (click)="selectDelete(client)" class="btn-warning" mat-raised-button style="min-width: 0; padding: 2px; margin: 0px 5px;">
                     <mat-icon matSuffix>delete_forever</mat-icon>
                   </button>
                 </td>
@@ -57,3 +57,6 @@
     </div>
   </div>
 </div>
+
+<app-confirm *ngIf="client" (cancel)="cancel()" (done)="delete()" [client]="client"></app-confirm>
+  
