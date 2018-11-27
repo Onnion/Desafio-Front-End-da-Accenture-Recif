@@ -27,12 +27,10 @@
                 <button type="button" mat-stroked-button (click)="cancelDelete()">cancelar</button>
               </div>
               <div class="col text-center">
-                <button type="submit" mat-raised-button color="warn">Excluir</button>
+                <button [disabled]="!form.valid" type="submit" mat-raised-button color="warn">Excluir</button>
               </div>
             </div>
           </form>
-
-
         </mat-card>
       </div>
     </div>

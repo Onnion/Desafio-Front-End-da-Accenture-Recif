@@ -63,6 +63,12 @@ export class DataPersistenceService {
   }
 
 
-  public delete(entity: string, data: Client): void {}
+  public delete(entity: string, data: Client): void {
+    const clients = this.read(entity);
+    const $clients = clients.filter((client) => client.id !== data.id);
+
+    localStorage.setItem(entity, JSON.stringify($clients));
+
+  }
 
 }

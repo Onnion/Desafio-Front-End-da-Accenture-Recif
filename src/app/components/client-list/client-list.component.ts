@@ -32,6 +32,7 @@ export class ClientListComponent implements OnInit {
   public delete() {
     this.dataPersistence.delete('client', this.client);
     this.cancel();
+    this.loadData();
   }
 
 
