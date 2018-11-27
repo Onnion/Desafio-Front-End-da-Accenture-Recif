@@ -5,3 +5,8 @@
     vertical-align: middle;
     color: #FFFFFF!important;
 }
+
+.line:hover {
+    background: #eaeaea;
+    cursor: pointer;
+}
