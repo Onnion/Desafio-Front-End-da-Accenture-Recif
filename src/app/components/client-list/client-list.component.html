@@ -27,7 +27,7 @@
             <tbody *ngIf="clients" [@listObjShow]>
               <tr *ngFor="let client of clients">
                 <th scope="row">
-                  {{client.name}}
+                  {{client.name.split(' ')[0]}}
                 </th>
                 <td>
                   {{client.phone}}
@@ -36,7 +36,7 @@
                   {{client.email}}
                 </td>
                 <td>
-                  <button class="btn-primary" mat-raised-button style="min-width: 0; padding: 2px; margin: 0px 5px;">
+                  <button [routerLink]="['/editar', client.id]" class="btn-primary" mat-raised-button style="min-width: 0; padding: 2px; margin: 0px 5px;">
                     <mat-icon matSuffix>edit</mat-icon>
                   </button>
                   <button class="btn-warning" mat-raised-button style="min-width: 0; padding: 2px; margin: 0px 5px;">

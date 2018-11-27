@@ -7,14 +7,9 @@ import { ClientListComponent } from './components/client-list/client-list.compon
 
 const routes: Routes = [
 
-  { path: '', component: ClientListComponent
- },
-  { path: 'cadastrar', component: ClientFormComponent },
-  // { path: 'midia/noticias', component: MediaComponent, data: {type: 'news'} },
-  // { path: 'midia/videos', component: MediaComponent, data: {type: 'videos'} },
-  // { path: 'midia/decisoes', component: MediaComponent, data: {type: 'decisions'} },
-  // { path: 'midia/artigos', component: MediaComponent, data: {type: 'articles'} },
-  // { path: 'midia/:type/:id/:title', component: MediaComponent },
+  { path: '', component: ClientListComponent },
+  { path: 'cadastrar', component: ClientFormComponent, data: {type: 'register'} },
+  { path: 'editar/:id', component: ClientFormComponent, data: {type: 'edit'} },
   { path: '**', redirectTo: '' },
 
 ];
