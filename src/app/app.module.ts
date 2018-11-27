@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ComponentsModule } from './components/components.module';
+import { NotifierModule } from 'angular-notifier';
+import { notifierDefaultOptions } from './helpers/consts/consts.helpers';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,8 @@ import { ComponentsModule } from './components/components.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    ComponentsModule
+    ComponentsModule,
+    NotifierModule.withConfig(notifierDefaultOptions)
   ],
   providers: [],
   bootstrap: [AppComponent]
