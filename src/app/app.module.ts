@@ -7,6 +7,11 @@ import { ComponentsModule } from './components/components.module';
 import { NotifierModule } from 'angular-notifier';
 import { notifierDefaultOptions } from './helpers/consts/consts.helpers';
 
+
+import { MatInputModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+
 @NgModule({
   declarations: [
     AppComponent
@@ -15,7 +20,12 @@ import { notifierDefaultOptions } from './helpers/consts/consts.helpers';
     BrowserModule,
     BrowserAnimationsModule,
     ComponentsModule,
-    NotifierModule.withConfig(notifierDefaultOptions)
+    NotifierModule.withConfig(notifierDefaultOptions),
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
