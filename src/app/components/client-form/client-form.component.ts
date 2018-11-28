@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Client } from 'src/app/models/clients/clients.model';
 import { FormBuilderValidators } from 'src/app/helpers/validators';
 import { MaskDirective } from 'src/app/helpers/directives/mask/mask.directive';
+import { NotifyService } from 'src/app/services';
 
 @Component({
   selector: 'app-client-form',
@@ -23,7 +24,8 @@ export class ClientFormComponent implements OnInit, AfterViewInit {
     private fb: FormBuilder,
     private router: Router,
     private active: ActivatedRoute,
-    private custonValidators: FormBuilderValidators
+    private custonValidators: FormBuilderValidators,
+    private notify: NotifyService
   ) { }
 
 
@@ -61,6 +63,8 @@ export class ClientFormComponent implements OnInit, AfterViewInit {
       }
 
       this.dataPersistence[this.type === 'edit' ? 'update' : 'create']('client', data);
+      this.notify.show('success', `Cliente ${this.type === 'edit' ? 'atualizado' : 'criado'} com sucesso`);
+
       this.router.navigate(['/']);
 
     }

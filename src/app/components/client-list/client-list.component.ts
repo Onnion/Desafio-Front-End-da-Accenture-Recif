@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Client } from 'src/app/models/clients/clients.model';
 import { DataPersistenceService } from 'src/app/services/data-persistence/data-persistence.service';
 import { listObjShow, fade } from 'src/app/helpers/animations/animations.helper';
+import { NotifyService } from 'src/app/services';
 
 @Component({
   selector: 'app-client-list',
@@ -20,7 +21,7 @@ export class ClientListComponent implements OnInit {
   @Input() clients: Client[];
 
 
-  constructor(private dataPersistence: DataPersistenceService) { }
+  constructor(private dataPersistence: DataPersistenceService, private notify: NotifyService) { }
 
 
   private hasFilter(client: Client, filter: string): boolean {
@@ -30,7 +31,7 @@ export class ClientListComponent implements OnInit {
   }
 
 
-  private replace (name: String) {
+  private replace(name: String) {
 
     let _name = name.toLowerCase();
     _name = _name.replace(new RegExp('[ÁÀÂÃ]', 'gi'), 'a');
@@ -44,7 +45,7 @@ export class ClientListComponent implements OnInit {
 
   public loadData() {
     this.clientsBeforeFiltred = this.dataPersistence.read('client');
-    this.clientsAfterFiltred  = this.clientsBeforeFiltred;
+    this.clientsAfterFiltred = this.clientsBeforeFiltred;
 
   }
 
@@ -59,6 +60,7 @@ export class ClientListComponent implements OnInit {
     this.dataPersistence.delete('client', this.client);
     this.cancel();
     this.loadData();
+    this.notify.show('success', 'Cliente excluido com sucesso');
   }
 
 
@@ -67,19 +69,14 @@ export class ClientListComponent implements OnInit {
   }
 
 
-  public filter() {
-    this.clients = this.clients.filter(() => {
-
-    });
-  }
-
-
   public handleFilter() {
-    if (!this.search || this.search === '') {
+    if (!this.search || this.search === '' || !this.clientsAfterFiltred) {
       this.clientsAfterFiltred = this.clientsBeforeFiltred;
       return;
     }
+
     this.clientsAfterFiltred = this.clientsBeforeFiltred.filter(client => this.hasFilter(client, this.search));
+
   }
 
 
