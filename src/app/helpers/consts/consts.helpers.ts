@@ -1,13 +1,5 @@
 import { NotifierOptions } from 'angular-notifier';
 
-export const masks = {
-    CPF: '999.999.999-99',
-    CNPJ: '99.999.999/9999-99',
-    PHONE_D: '(99) 9 9999-9999',
-    PHONE: '(99) 9999-9999',
-    AGE: '999'
-
-};
 
 export const notifierDefaultOptions: NotifierOptions = {
     position: {
