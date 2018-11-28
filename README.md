@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/Onnion/Desafio-Frontend-Accenture-Recife.svg?branch=master)](https://travis-ci.org/Onnion/Desafio-Frontend-Accenture-Recife)
+
+
 # DesafioFrontendAccentureRecife
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
