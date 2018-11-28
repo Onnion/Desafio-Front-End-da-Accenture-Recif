@@ -4,7 +4,6 @@ import { DataPersistenceService } from 'src/app/services/data-persistence/data-p
 import { Router, ActivatedRoute } from '@angular/router';
 import { Client } from 'src/app/models/clients/clients.model';
 import { FormBuilderValidators } from 'src/app/helpers/validators';
-import { MaskDirective } from 'src/app/helpers/directives/mask/mask.directive';
 import { NotifyService } from 'src/app/services';
 
 @Component({
