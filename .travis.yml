@@ -18,6 +18,13 @@ cache:
 addons:
   chrome: stable
 
+notifications:
+  email:
+    recipients:
+      - marcio.hsdl@gmail.com
+    on_success: always
+    on_failure: always
+
 before_script:
   - npm install -g @angular/cli
 

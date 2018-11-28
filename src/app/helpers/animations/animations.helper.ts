@@ -24,16 +24,6 @@ export const routerTransition = trigger('routerTransition', [
     ])
 ]);
 
-export const showup = trigger('showup', [
-    transition('void => *', [
-        style({ transform: 'translateY(-100%)' }),
-        animate(500, style({ transform: 'translateY(0)' }))
-    ]),
-    transition('* => void', [
-        style({ transform: 'translateY(0)' }),
-        animate(500, style({ transform: 'translateY(-100%)' }))
-    ])
-]);
 
 export const listObjShow = trigger('listObjShow', [
     transition('* => *', [
@@ -58,28 +48,3 @@ export const listObjShow = trigger('listObjShow', [
         ]), { optional: true }),
     ])
 ]);
-
-export const fade = trigger('fade', [
-    transition('void => *', [
-        style({ opacity: '0' }),
-        animate(1000, style({ opacity: '1' }))
-    ]),
-    transition('* => void', [
-        style({ opacity: '1' }),
-        animate(1000, style({ opacity: '0' }))
-    ])
-]);
-
-export const collapse = trigger('collapse', [
-    transition('void => *', [
-        style({ height: '0' }),
-        animate(300, style({ height: '*' }))
-    ]),
-    transition('* => void', [
-        style({ height: '*' }),
-        animate(300, style({ height: '0' }))
-    ])
-]);
-
-
-
