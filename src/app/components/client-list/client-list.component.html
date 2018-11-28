@@ -25,7 +25,16 @@
                         <mat-icon matSuffix>search</mat-icon>
                       </span>
                     </div>
-                    <input (keyup)="handleFilter()" (keydown)="handleFilter()"  [(ngModel)]="search" class="form-control" placeholder="Search" name="search" type="text">
+                    <input 
+                    (keyup)="handleFilter()" 
+                    (keydown)="handleFilter()"  
+                    [(ngModel)]="search"
+                    autofocus
+                    autocomplete="off"
+                    class="form-control" 
+                    placeholder="Buscar por nome ou CPF" 
+                    name="search" 
+                    type="text">
                   </div>
                 </div>
               </form>
