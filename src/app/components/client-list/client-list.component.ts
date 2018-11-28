@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Client } from 'src/app/models/clients/clients.model';
 import { DataPersistenceService } from 'src/app/services/data-persistence/data-persistence.service';
-import { listObjShow, fade } from 'src/app/helpers/animations/animations.helper';
+import { listObjShow } from 'src/app/helpers/animations/animations.helper';
 import { NotifyService } from 'src/app/services';
 
 @Component({
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
   styleUrls: ['./client-list.component.css'],
-  animations: [listObjShow, fade]
+  animations: [listObjShow]
 })
 export class ClientListComponent implements OnInit {
 
